@@ -56,12 +56,10 @@ function App() {
         const response = await fetch('https://api.memegen.link/templates');
         const responseData = await response.json();
         setData(responseData);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     }
     fetchData().catch(() => {});
-  }, [data]);
+  }, []);
 
   // useEffect(() => {
   //   fetchData();
