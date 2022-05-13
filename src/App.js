@@ -78,27 +78,29 @@ function App() {
           {' '}
         </label>
         <div css={inputSection}>
-          Meme Template:
-          <br />
-          <select
-            onKeyDown={(event) => {
-              if (event.key === 'Enter') {
-                event.preventDefault();
-                setUrl(event.currentTarget.value);
-              }
-            }}
-            onChange={(event) => {
-              setDropdown(event.currentTarget.value);
-            }}
-            placeholder="Select"
-          >
-            {' '}
-            {data.map((d) => (
-              <option key={d.id} value={d.id}>
-                {d.name}
-              </option>
-            ))}
-          </select>
+          <label>
+            Meme Template:
+            <br />
+            <select
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  event.preventDefault();
+                  setUrl(event.currentTarget.value);
+                }
+              }}
+              onChange={(event) => {
+                setDropdown(event.currentTarget.value);
+              }}
+              placeholder="Select"
+            >
+              {' '}
+              {data.map((d) => (
+                <option key={d.id} value={d.id}>
+                  {d.name}
+                </option>
+              ))}
+            </select>
+          </label>
           <button
             onClick={() =>
               setUrl(
@@ -124,10 +126,9 @@ function App() {
           </label>
           <br />
           <br />
-          Bottom Text
-          <br />
           <label>
-            {' '}
+            Bottom Text
+            <br />{' '}
             <input
               onChange={(event) => {
                 setInputUp(event.currentTarget.value);
