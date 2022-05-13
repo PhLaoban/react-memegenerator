@@ -7,15 +7,29 @@ import React, { useEffect, useState } from 'react';
 const inputSection = css`
   grid-auto-flow: row;
   font-family: ubuntu300;
-`;
-
-const container = css`
-  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  button {
+    width: 100px;
+    margin: 10px 20px;
+  }
+  input {
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+  label {
+    margin-left: 20px;
+  }
+  img {
+    width: 500px;
+  }
 `;
 
 const backGround = css`
-  background-size: 100%;
-  flex-wrap: wrap;
+  background-size: contain;
+  margin-top: -25px;
+  height: 1000px;
   background-image: linear-gradient(
     to left top,
     #41dad1,
@@ -42,7 +56,6 @@ function App() {
         const response = await fetch('https://api.memegen.link/templates');
         const responseData = await response.json();
         setData(responseData);
-        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -66,98 +79,101 @@ function App() {
   );
 
   return (
-    <div className="menu-container">
-      <container css={container}> </container>
-      <div css={backGround}>
-        <h1>Memegenerator</h1>
-        <label
-          style={{
-            fontWeight: 'bolder',
-          }}
-        >
-          {' '}
-        </label>
-        <div css={inputSection}>
-          <label>
-            Meme Template:
-            <br />
-            <select
-              onKeyDown={(event) => {
-                if (event.key === 'Enter') {
-                  event.preventDefault();
-                  setUrl(event.currentTarget.value);
-                }
-              }}
-              onChange={(event) => {
-                setDropdown(event.currentTarget.value);
-              }}
-              placeholder="Select"
-            >
-              {' '}
-              {data.map((d) => (
-                <option key={d.id} value={d.id}>
-                  {d.name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <button
-            onClick={() =>
-              setUrl(
-                `https://api.memegen.link/images/${dropdown}/${inputUp}/${inputDown}.png`,
-              )
-            }
-          >
-            Generate
-          </button>
-          {''}{' '}
-          <label>
-            <br />
-            <br />
-            Top Text
-            <br />
-            <input
-              onChange={(event) => {
-                setInputDown(event.currentTarget.value);
-              }}
-              value={inputDown}
-            />
-            <br />
-          </label>
-          <br />
-          <br />
-          <label>
-            Bottom Text
-            <br />{' '}
-            <input
-              onChange={(event) => {
-                setInputUp(event.currentTarget.value);
-              }}
-              value={inputUp}
-            />
-          </label>
-        </div>
+    <div css={backGround} className="menu-container">
+      <div>
         <div>
-          <img
-            style={{ height: '300px' }}
-            data-test-id="meme-image"
-            src={`https://api.memegen.link/images/${
-              dropdown ? dropdown : 'aag'
-            }/${inputDown ? inputDown : '_'}/${inputUp ? inputUp : ''}.png`}
-            alt=" "
-          />
-          <button onClick={() => setInputDown('')(setInputUp(''))}>
-            Clear
-          </button>
-          <button
-            onClick={() =>
-              saveAs(url, `${dropdown}-${inputUp}-${inputDown}.png`)
-            }
+          <div>
+            <h1>Memegenerator</h1>
+          </div>
+          {/* <label
+            style={{
+              fontWeight: 'bolder',
+            }}
           >
-            Download Image
-          </button>
-          <br />
-          <br />
+            {' '}
+          </label> */}
+          <div css={inputSection}>
+            <label>
+              Meme Template:
+              <br />
+              <select
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    event.preventDefault();
+                    setUrl(event.currentTarget.value);
+                  }
+                }}
+                onChange={(event) => {
+                  setDropdown(event.currentTarget.value);
+                }}
+                placeholder="Select"
+              >
+                {' '}
+                {data.map((d) => (
+                  <option key={d.id} value={d.id}>
+                    {d.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button
+              onClick={() =>
+                setUrl(
+                  `https://api.memegen.link/images/${dropdown}/${inputUp}/${inputDown}.png`,
+                )
+              }
+            >
+              Generate
+            </button>
+            {''}{' '}
+            <label>
+              <br />
+              <br />
+              Top Text
+              <br />
+              <input
+                onChange={(event) => {
+                  setInputDown(event.currentTarget.value);
+                }}
+                value={inputDown}
+              />
+              <br />
+            </label>
+            <br />
+            <br />
+            <label>
+              Bottom Text
+              <br />{' '}
+              <input
+                onChange={(event) => {
+                  setInputUp(event.currentTarget.value);
+                }}
+                value={inputUp}
+              />
+            </label>
+          </div>
+          <div css={inputSection}>
+            <img
+              style={{ height: '300px' }}
+              data-test-id="meme-image"
+              src={`https://api.memegen.link/images/${
+                dropdown ? dropdown : 'aag'
+              }/${inputDown ? inputDown : '_'}/${inputUp ? inputUp : ''}.png`}
+              alt=" "
+            />
+            <button onClick={() => setInputDown('')(setInputUp(''))}>
+              Clear
+            </button>
+            <button
+              onClick={() =>
+                saveAs(url, `${dropdown}-${inputUp}-${inputDown}.png`)
+              }
+            >
+              Download Image
+            </button>
+            <br />
+            <br />
+          </div>
         </div>
       </div>
     </div>
