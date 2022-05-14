@@ -123,11 +123,10 @@ function App() {
             >
               Generate
             </button>
-            {''}{' '}
+            {''} <br />
+            <br />
             <label>
-              <br />
-              <br />
-              Top Text
+              Top text
               <br />
               <input
                 onChange={(event) => {
@@ -140,7 +139,7 @@ function App() {
             <br />
             <br />
             <label>
-              Bottom Text
+              Bottom text
               <br />{' '}
               <input
                 onChange={(event) => {
