@@ -159,9 +159,11 @@ function App() {
               }/${inputDown ? inputDown : '_'}/${inputUp ? inputUp : ''}.png`}
               alt=" "
             />
-            <button onClick={() => setInputDown('')(setInputUp(''))}>
-              Clear
-            </button>
+            <div>
+              {/* <button onClick={() => setInputUp('')(setInputDown(''))}>
+                Clear
+              </button> */}
+            </div>
             <button
               onClick={() =>
                 saveAs(url, `${dropdown}-${inputUp}-${inputDown}.png`)
