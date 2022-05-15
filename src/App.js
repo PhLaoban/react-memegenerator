@@ -72,8 +72,8 @@ function App() {
 
   const [url, setUrl] = useState(
     `https://api.memegen.link/images/${dropdown ? dropdown : 'aag'}/${
-      inputDown ? inputDown : '_'
-    }/${inputUp ? inputUp : ''}.png`,
+      inputUp ? inputUp : '_'
+    }/${inputDown ? inputDown : ''}.png`,
   );
 
   return (
