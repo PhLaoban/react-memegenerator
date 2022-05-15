@@ -123,7 +123,7 @@ function App() {
             >
               Generate
             </button>
-            {''} <br />
+            <br />
             <br />
             <label>
               Top text
