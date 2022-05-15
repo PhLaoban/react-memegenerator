@@ -92,7 +92,7 @@ function App() {
           </label> */}
           <div css={inputSection}>
             <label>
-              Meme Template:
+              Meme template
               <br />
               <select
                 onKeyDown={(event) => {
@@ -140,7 +140,7 @@ function App() {
             <br />
             <label>
               Bottom text
-              <br />{' '}
+              <br />
               <input
                 onChange={(event) => {
                   setInputUp(event.currentTarget.value);
@@ -168,7 +168,7 @@ function App() {
                 saveAs(url, `${dropdown}-${inputUp}-${inputDown}.png`)
               }
             >
-              Download Image
+              Download
             </button>
             <br />
             <br />
